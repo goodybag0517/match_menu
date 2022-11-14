@@ -10,16 +10,25 @@
         </button>
       </a>
     </div>
-    <h2 class="font-bold text-30px text-gray-700 mx-3 mt-10 after:content-['»'] after:pl-3">新作のレシピ一覧</h2>
 
+    <h2 class="font-bold text-30px text-gray-700 mx-3 mt-10 after:content-['»'] after:pl-3">新作のレシピ一覧</h2>
+    {{-- 新しいレシピを表示 --}}
     <div class="w-full grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 items-center">
-      @foreach($posts as $post)
-        <div class="my-3 mx-3 hover:opacity-70">
-          <a href="{{route('post.show',$post)}}">
-            <img src="{{asset('storage/images/'.$post->image)}}" alt="献立の画像" class="object-cover h-[250px] w-full max-w-[320px] mx-auto"  style="border-radius:45px">
-          </a>
-        </div>
-      @endforeach
+      {{-- 新しいレシピがない場合 --}}
+      @if(count($posts) == 0)
+        <p class="my-7 mx-3 text-gray-600 font-semibold text-20px">
+          まだ投稿されたレシピがありません。
+        </p>
+        {{-- 新しいレシピがある場合 --}}
+      @else
+        @foreach($posts as $post)
+          <div class="my-3 mx-3 hover:opacity-70">
+            <a href="{{route('post.show',$post)}}">
+              <img src="{{asset('storage/images/'.$post->image)}}" alt="献立の画像" class="object-cover h-[250px] w-full max-w-[320px] mx-auto"  style="border-radius:45px">
+            </a>
+          </div>
+        @endforeach
+      @endif
     </div>
 
    

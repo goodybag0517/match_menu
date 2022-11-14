@@ -1,7 +1,7 @@
 <x-app-layout>
   
   <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
+    
     <div class="w-full flex justify-center my-16">
       <a href="{{ route('menu.create') }}">
         <button class="font-bold  text-25px text-white text-center rounded-full bg-amber-400 py-3 w-[350px]" type="submit">新しい献立を作成する

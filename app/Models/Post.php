@@ -8,15 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-
+    // userテーブルとのリレーション
     public function user(){
         return $this->belongsTo(User::class);
     }
-
+    // niceテーブルとのリレーション
     public function nices() {
         return $this->hasMany(Nice::class);
     }
-
+    // postテーブルの編集許諾
     protected $fillable = [
         'title',
         'image',

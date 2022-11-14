@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Nice extends Model
 {
     use HasFactory;
-
+    // userテーブルとのリレーション
     public function user() {
         return $this->belongsTo(User::class);
     }
- 
+    // postテーブルとのリレーション
     public function post() {
         return $this->belongsTo(Post::class);
     }

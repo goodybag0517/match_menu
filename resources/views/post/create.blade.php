@@ -9,6 +9,7 @@
     @include('common.errors')
     <x-message :message="session('message')"/>
     <div class="mx-4 sm:marker:p-8">
+      {{-- レシピ内容入力 --}}
       <form method="post" action={{route('post.store')}} enctype="multipart/form-data">
         @csrf
         <div class="flex flex-col mt-8">

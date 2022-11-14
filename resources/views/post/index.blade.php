@@ -10,6 +10,7 @@
         </button>
       </a>
     </div>
+    
     <h2 class="font-bold text-30px text-gray-700 mx-3 mt-10 after:content-['»'] after:pl-3">
       <a href="{{ route('post.newmenu') }}">
         新作のレシピ一覧

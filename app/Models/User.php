@@ -17,15 +17,16 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    // postテーブルとのリレーション
     public function posts(){
         return $this->hasMany(Post::class);
     }
-
+    // niceテーブルとのリレーション
     public function nices() {
         return $this->hasMany(Nice::class);
     }
 
-
+    // userテーブルの更新許諾
     protected $fillable = [
         'name',
         'password',

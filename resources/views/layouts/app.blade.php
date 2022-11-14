@@ -34,6 +34,11 @@
             <main>
                 {{ $slot }}
             </main>
+
+            
+        </div>
+        <div class="mb-0 mt-20 w-full text-center bg-gray-300 py-5 ">
+            <p class="text-gray-800 font-semibold text-15px">Match Menu ポートフォリオ</p>
         </div>
     </body>
 </html>

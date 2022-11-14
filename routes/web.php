@@ -28,6 +28,7 @@ require __DIR__.'/auth.php';
 
 Route::get('post.newmenu',[PostController::class,'newmenu'])->name('post.newmenu');
 Route::get('post.mymenu',[PostController::class,'mymenu'])->name('post.mymenu');
+
 Route::get('post.nicemenu',[PostController::class,'nicemenu'])->name('post.nicemenu');
 Route::get('post.mynicemenu',[PostController::class,'mynicemenu'])->name('post.mynicemenu');
 Route::resource('post',PostController::class);

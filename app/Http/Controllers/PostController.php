@@ -15,17 +15,26 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
+    // ログインユーザー以外のアクセスを制限
     public function __construct(){
         $this->middleware('auth');
     }
-
+    // 最新・自身・人気の献立を4個取得⇒表示
     public function index()
     {
-        $posts=Post::orderBy('created_at','desc')->take(4)->get();
         $user_id = Auth::id();
-        $MyPosts=Post::where('user_id', $user_id)->orderBy('created_at','desc')->take(4)->get();
-        $NicePosts = Post::withCount('nices')->orderBy('nices_count', 'desc')->take(4)->get();;
+        $posts=Post::orderBy('created_at','desc')
+        ->take(4)
+        ->get();
+        $MyPosts=Post::where('user_id', $user_id)
+        ->orderBy('created_at','desc')
+        ->take(4)
+        ->get();
+        $NicePosts = Post::withCount('nices')
+        ->having('nices_count', '>', 0)
+        ->orderBy('nices_count', 'desc')
+        ->take(4)
+        ->get();;
         return view('post.index',compact('posts','MyPosts','NicePosts'));
     }
 
@@ -34,6 +43,7 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // 献立投稿画面へ遷移
     public function create()
     {
         return view('post.create');
@@ -45,6 +55,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    // 献立投稿内容をDBに保存
     public function store(Request $request)
     {
         $inputs=$request->validate([
@@ -83,6 +94,7 @@ class PostController extends Controller
         $post->step3 = $request->step3;
         $post->step4 = $request->step4;
         $post->step5 = $request->step5;
+        // 画像保存
         $original = request()->file('image')->getClientOriginalName();
         $name = date('Ymd_His').'_'.$original;
         request()->file('image')->move('storage/images',$name);
@@ -97,6 +109,7 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
+    // レシピの詳細を表示＆いいね情報取得
     public function show(Post $post)
     {
         $nice=Nice::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
@@ -109,6 +122,7 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
+    // 変種画面に遷移（投稿ユーザーのみ）
     public function edit(Post $post)
     {
         $this->authorize('update', $post);
@@ -122,6 +136,7 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
+    // 投稿内容編集（投稿ユーザーのみ）
     public function update(Request $request, Post $post)
     {
         $this->authorize('update', $post);
@@ -174,6 +189,7 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
+    // 投稿内容削除（投稿ゆーさーのみ）
     public function destroy(Post $post)
     {
       $this->authorize('delete', $post);
@@ -195,7 +211,9 @@ class PostController extends Controller
 
     //人気メニュー表示用の処理 
     public function nicemenu(){
-        $posts = Post::withCount('nices')->orderBy('nices_count', 'desc')->take(4)->get();;
+        $posts = Post::withCount('nices')
+        ->having('nices_count', '>', 0)
+        ->orderBy('nices_count', 'desc')->take(4)->get();;
         return view('post.nicemenu',compact('posts'));
     }
 

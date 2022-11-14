@@ -8,6 +8,8 @@
   <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
     @include('common.errors')
     <x-message :message="session('message')"/>
+
+    {{-- レシピ編集 --}}
     <div class="mx-4 sm:marker:p-8">
       <form method="post" action={{route('post.update',$post)}} enctype="multipart/form-data">
         @csrf

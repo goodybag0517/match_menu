@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class NiceController extends Controller
 {
+        // 保存情報をDBに記録
     public function nice(Post $post, Request $request){
         $nice=New Nice();
         $nice->post_id=$post->id;
@@ -17,6 +18,7 @@ class NiceController extends Controller
         return back();
     }
 
+    // 保存情報をDBから消去
     public function unnice(Post $post, Request $request){
         $user=Auth::user()->id;
         $nice=Nice::where('post_id', $post->id)->where('user_id', $user)->first();

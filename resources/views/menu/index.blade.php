@@ -12,7 +12,7 @@
 
       <ul class="slider">
         {{-- 献立の表示 --}}
-        {{-- jsonデータがある場合 --}}
+        {{-- cookeiがある場合 --}}
         @if(isset($_COOKIE["Menus"]))
 
           @foreach($menus as $menu)
@@ -23,7 +23,7 @@
             </li>
           @endforeach
         @else
-          {{-- jsonデータがない場合（献立を生成していないときの表示） --}}
+          {{-- cookeiがない場合（献立を生成していないときの表示） --}}
           @for($i = 1; $i < 6; $i++) 
             <li class="">
               <img src="{{asset('storage/images/l_e_others_500.png')}}" alt="献立の画像" class="object-cover h-[250px] w-full lg:max-w-[320px] mx-auto"  style="border-radius:45px">

@@ -13,11 +13,12 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // ログインユーザー以外のアクセスを禁止
     public function __construct(){
         $this->middleware('auth');
       }
 
-
+    //   cookeiに保存されている献立情報を取得⇒表示
     public function index()
     {
         $menus = json_decode(Cookie::get('Menus'));
@@ -29,6 +30,7 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // 献立をランダムに作成⇒cookeiに保存
     public function create()
     {   
         $menus = Post::inRandomOrder()
