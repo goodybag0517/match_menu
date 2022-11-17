@@ -14,7 +14,7 @@
         <!-- 「いいね」取消用ボタンを表示 -->
           <div class="flex items-center ml-8 py-2">
             <a href="{{ route('unnice', $post) }}" class="btn btn-success btn-sm">
-              <img src="{{asset('logo/keep.PNG')}}" alt="" class="w-[20px] hover:opacity-40">
+              <img src="{{asset('logo/keep.png')}}" alt="" class="w-[20px] hover:opacity-40">
             </a>
             <!-- 「いいね」の数を表示 -->
             <span class="badge ml-3 text-amber-500 font-bold text-[18px]">
@@ -25,7 +25,7 @@
         <!-- まだユーザーが「いいね」をしていなければ、「いいね」ボタンを表示 -->
           <div class="flex items-center ml-8 py-2">
             <a href="{{ route('nice', $post) }}" class="btn btn-secondary btn-sm">
-              <img src="{{asset('logo/keep.PNG')}}" alt="" class="w-[20px] hover:opacity-40">
+              <img src="{{asset('logo/keep.png')}}" alt="" class="w-[20px] hover:opacity-40">
               <!-- 「いいね」の数を表示 -->
             </a>
             <span class="badge ml-3 text-gray-500 font-bold text-[18px]">
