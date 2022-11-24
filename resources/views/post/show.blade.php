@@ -39,10 +39,10 @@
 
       <div class="flex mb-6 items-center">
         
-          <h3 class="font-bold text-30px text-amber-500 bg-white border border-gray-300 rounded-full w-[300px] px-4 py-1  ml-4">
-            {{$post->title}}
+          <h3 class="font-bold text-20px sm:text-25px text-amber-500  ml-6 border-b-4 border-amber-300">
+              {{$post->title}}
           </h3>
-
+        
         <div class="ml-auto text-center">
           <p class="text-15px text-gray-400">{{$post->created_at}}</p>
           @can('delete',$post)
@@ -88,8 +88,11 @@
                 @if($post->$step_num==null)
                 @break
                 @endif
-                  <li class="font-bold text-20px text-amber-500 bg-white border border-gray-300 rounded-full w-full px-4 py-1 my-2">
-                    {{$post->$step_num}}
+                  <li class="font-bold text-20px text-amber-500 w-full px-3 py-1 my-2">  
+                    
+                    <p class="border-b-2 border-gray-300 leading-8">
+                      {{$post->$step_num}}
+                    </p>
                   </li>
               @endfor
             </ul>

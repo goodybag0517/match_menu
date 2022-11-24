@@ -141,22 +141,22 @@ class PostController extends Controller
     {
         $this->authorize('update', $post);
         $inputs=$request->validate([
-            'title'=>'required|max:255',
+            'title'=>'required|max:20',
             'image'=>'required|image|max:1024',
-            'food1'=>'required|max:255',
-            'food2'=>'max:255',
-            'food3'=>'max:255',
-            'food4'=>'max:255',
-            'food5'=>'max:255',
-            'food6'=>'max:255',
-            'food7'=>'max:255',
-            'food8'=>'max:255',
-            'food9'=>'max:255',
-            'step1'=>'required|max:1000',
-            'step2'=>'max:1000',
-            'step3'=>'max:1000',
-            'step4'=>'max:1000',
-            'step5'=>'max:1000',
+            'food1'=>'required|max:10',
+            'food2'=>'max:10',
+            'food3'=>'max:10',
+            'food4'=>'max:10',
+            'food5'=>'max:10',
+            'food6'=>'max:10',
+            'food7'=>'max:10',
+            'food8'=>'max:10',
+            'food9'=>'max:10',
+            'step1'=>'required|max:150',
+            'step2'=>'max:150',
+            'step3'=>'max:150',
+            'step4'=>'max:150',
+            'step5'=>'max:150',
         ]);
 
         $post->title = $request->title;
