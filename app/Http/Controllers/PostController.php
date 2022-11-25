@@ -221,10 +221,9 @@ class PostController extends Controller
     public function mynicemenu(){
         $user_id = Auth::id();
         $posts = Nice::where('user_id', $user_id)
+        ->with('post')
         ->orderBy('created_at','desc')
-        ->select('id', 'post->image')
         ->get();
-        $posts->load('post');
 
         return view('post.mynicemenu',compact('posts'));
     }
